@@ -1,0 +1,47 @@
+.idea/
+testoutput/snapshot/登录成功测试.jpg
+testoutput/snapshot/登录失败用例1.jpg
+testoutput/snapshot/登录失败用例0.jpg
+testoutput/snapshot/2018-04-25 164643672.jpg
+testoutput/snapshot/2018-04-25 091056392.jpg
+testoutput/snapshot/2018-04-25 091048762.jpg
+testoutput/snapshot/2018-04-23 121312823.jpg
+testoutput/snapshot/2018-04-21 185059385.jpg
+testoutput/snapshot/2018-04-21 185051709.jpg
+testoutput/report.js
+testoutput/report.html
+testoutput/report.css
+testoutput/passed.xml
+testoutput/logo1.png
+testoutput/log/20180508/log_20180508.html
+testoutput/log/20180507/log_20180507.html
+testoutput/log/2018-05-04/log_2018-05-04.html
+testoutput/log/2018-05-02/log_2018-05-02.html
+testoutput/log/2018-04-25/log_2018-04-25.html
+testoutput/log/2018-04-24/log_2018-04-24.html
+testoutput/log/2018-04-23/log_2018-04-23.html
+testoutput/log/2018-04-21/log_2018-04-21.html
+testoutput/loadxmldoc.js
+testoutput/jquery-1.7.1.min.js
+testoutput/imageshow.css
+testoutput/failed.xml
+testoutput/close.gif
+testoutput/back.gif
+testoutput/ahsLogo.jpg
+testoutput/Chart.js
+test-output/log/2018-05-07/log_2018-05-07.html
+target/classes/org/webdriver/patatiumwebui/utils/TestReport.class
+target/classes/org/webdriver/patatiumwebui/utils/TestListener.class
+target/classes/org/webdriver/patatiumwebui/utils/ScreenShotUtil.class
+target/classes/org/webdriver/patatiumwebui/utils/ScreenShot.class
+target/classes/org/webdriver/patatiumwebui/utils/Log.class
+target/classes/org/webdriver/patatiumwebui/utils/DeleteFile.class
+target/classes/org/webdriver/patatiumwebui/utils/CopyReportResources.class
+target/classes/org/webdriver/patatiumwebui/pageObject/backstate/crm/order.class
+target/classes/org/webdriver/patatiumwebui/pageObject/backstate/LoginPage.class
+out/
+target/
+testoutput/snapshot/
+src/test/test.iml
+LICENSE
+DuiAWebUi.iml

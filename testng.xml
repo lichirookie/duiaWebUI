@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" allow-return-values="true">
+	<parameter name="driver" value="FirefoxDriver" /> <!--测试浏览器：支持火狐，谷歌，IE-->
+	<parameter name="nodeURL" value="" /> <!--selenium grid分布式运行node节点url，如不用分布式运行，则留空-->
+	<parameter name="JdLoginUrl" value="https://plogin.m.jd.com/user/login.action?appid" />  <!-- 测试系统基础Url-->
+    <parameter name="AhsBaseUrl" value="http://test.crm.aihuishou.com" />
+    <parameter name="DuiABaseUrl" value=""></parameter>
+	<parameter name="UserName" value="" /> <!-- 系统登录用户名-->
+	<parameter name="PassWord" value="" />  <!-- 系统登录密码-->
+    <parameter name="smtpUserName" value="suprookie@sina.cn" />  <!-- 测试报告邮件发送：smtp身份证验证：发件人-->
+    <parameter name="smtpPassWord" value="glz19841012" />  <!-- 测试报告邮件发送：smtp身份证验证：发件人-->
+    <parameter name="smtpHost" value="smtp.sina.com.cn" />  <!-- 测试报告邮件发送：smtp主机地址：发件人-->
+    <parameter name="smtpPort" value="25" />  <!-- 测试报告邮件发送：smtp主机端口：：发件人-->
+    <parameter name="mailTitle" value="对啊UI自动化测试报告" />  <!-- 测试报告邮件发送：邮件标题-->
+    <parameter name="logUrl" value="http://172.16.21.66:8080/log/log.html" />  <!-- 测试报告邮件发送：用例运行日志url-->
+    <parameter name="reportUrl" value="http://172.16.21.66:8080/report/report.html" />  <!-- 测试报告邮件发送：完整测试报告url-->
+	<parameter name="recipients" value="guanlizhi4988@duia.com,congdeyi@duia.com" /> <!-- 测试报告邮件发送：收件人，多个用,号隔开-->
+    <parameter name="reportTitle" value="对啊网UI测试报告" />  <!--测试报告标题-->
+	<listeners><!-- 监听器设置-->
+        <listener class-name="org.webdriver.duiaui.util.TestListener"></listener>
+        <listener class-name="org.webdriver.duiaui.util.TestReport"></listener>
+    </listeners>
+     <test name="登录失败测试用例：数据驱动"> <!-- 测试用例描述-->
+         <!--<parameter name="driver" value="FirefoxDriver" /> &lt;!&ndash;测试浏览器：支持火狐，谷歌，IE&ndash;&gt;-->
+         <!--<parameter name="nodeURL" value="http://192.168.0.178:3155/wd/hub" /> &lt;!&ndash;selenium grid分布式运行node节点url，如不用分布式运行，则留空&ndash;&gt;-->
+        <classes>
+            <class name="duia.LoginTest">
+                <methods>
+                    <include name = "loginFail"></include>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+
+  <!--</test> &lt;!&ndash; Test &ndash;&gt;-->
+    <!--<test name="登录成功测试用例">-->
+        <!--&lt;!&ndash;<parameter name="driver" value="ChormeDriver" /> &lt;!&ndash;测试浏览器：支持火狐，谷歌，IE&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<parameter name="nodeURL" value="http://192.168.0.178:3166/wd/hub" /> &lt;!&ndash;selenium grid分布式运行node节点url，如不用分布式运行，则留空&ndash;&gt;&ndash;&gt;-->
+        <!--<classes>-->
+            <!--<class name="LoginTest">-->
+                <!--<methods >-->
+                    <!--<include name="login" />-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test> &lt;!&ndash; Test &ndash;&gt;-->
+</suite> <!-- Suite -->
