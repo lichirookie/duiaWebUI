@@ -14,21 +14,32 @@ import java.io.IOException;
 
 public class LoginTest extends TestBaseCase{
     ElementAction action=new ElementAction();
-    @Test(description="登录成功测试")
-    @Parameters({"BaseUrl"})//读取testng.xml参数
-    public void login(String BaseUrl) throws IOException
+    @Test(description="登录成功测试",dataProvider = "loginSuccessData")
+    public void loginSuccess(String caseName,String userName,String passWord,String url,String test) throws IOException
     {
         //调用登录方法，输入正确的用户名和密码
-        LoginAction loginAction=new LoginAction("http://192.168.3.247:8809/casservice/login?"+BaseUrl);
+        LoginAction loginAction=new LoginAction("http://sso.duia.com/uc");
         action.sleep(2);
-        loginAction.login("","");
+        loginAction.switchTo("切换到账号登录");
+        loginAction.login(userName,passWord);
         //设置检查点
-        Assertion.VerityTextPresentPrecision("请登录","输入正确的用户名和密码，验证是否成功进入主页");
+        Assertion.VerityTextPresentPrecision(test,"输入正确的用户名和密码，验证是否成功进入主页");
         //设置用例断言，判断用例是否失败
         Assertion.VerityError();
     }
+
     //数据驱动案例--start
-    @DataProvider(name="longinData")
+    @DataProvider(name="loginSuccessData")
+    public Object[][] loginSuccessData()
+    {
+        //读取登录用例测试数据
+        String filePath="src/main/resources/data/loginData.xls";
+        //读取第一个sheet，第2行到第5行-第2到第4列之间的数据
+        return ExcelReadUtil.case_data_excel(1,filePath);
+    }
+
+    //数据驱动案例--start
+    @DataProvider(name="longinFailData")
     public Object[][] loginData()
     {
         //读取登录用例测试数据
@@ -37,7 +48,7 @@ public class LoginTest extends TestBaseCase{
         //return ExcelReadUtil.case_data_excel(0, 1, 4, 1, 3,filePath);
         return ExcelReadUtil.case_data_excel(0,filePath);
     }
-    @Test(description="登录失败用例",dataProvider = "longinData")
+    @Test(description="登录失败用例",dataProvider = "longinFailData")
     public void loginFail (String caseName,String userName,String password,String message) throws IOException, DocumentException {
 	//代替testng参数化的方法
     //调用登录方法

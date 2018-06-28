@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 public class SendMail {
 	private Log log=new Log(SendMail.class);
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		SendMail sendMail=new SendMail();
 		sendMail.sendmessage("suprookie@sina.cn", "glz19841012", "smtp.sina.com.cn", "25", "suprookie@sina.cn","2696732525@qq.com", "你好", "你在家吗？");
-	}
+	}*/
 	/**
 	 *
 	 * @param userName  发送邮箱账号  xxx@xxx.com形式
@@ -89,8 +89,6 @@ public class SendMail {
 		//配置smtp身份验证
 		maiProperties.put("mail.smtp.auth", "true");
 		return maiProperties;
-
-
 	}
 }
 
