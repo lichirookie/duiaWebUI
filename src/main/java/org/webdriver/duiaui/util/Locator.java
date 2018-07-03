@@ -11,6 +11,16 @@ public class Locator {
   private int waitSec;
   private String locatorName;
 
+  public String getReturnType() {
+    return returnType;
+  }
+
+  public void setReturnType(String returnType) {
+    this.returnType = returnType;
+  }
+
+  private String returnType;
+
   /**
    * create a enum variable for By
    * 
@@ -50,6 +60,15 @@ public class Locator {
 	    this.byType = byType;
 	    this.locatorName=locatorName;
 	  }
+
+  public Locator(String element, int waitSec, ByType byType,String locatorName,String returnType) {
+    this.waitSec = waitSec;
+    this.element = element;
+    this.byType = byType;
+    this.locatorName=locatorName;
+    this.returnType = returnType;
+  }
+
   public String getElement() {
     return element;
   }
@@ -68,4 +87,6 @@ public class Locator {
   {
 	  return locatorName;
   }
+
+
 }

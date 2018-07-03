@@ -33,6 +33,12 @@ public class ElementAction extends TestBaseCase{
 
 	private Log log=new Log(this.getClass());
 	public static ArrayList<Exception> noSuchElementExceptions=new ArrayList<Exception>();
+
+	public void hover(WebElement element){
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(element).perform();
+	}
+
 	private String formatDate(Date date)
 	{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HHmmssSSS");
@@ -70,6 +76,7 @@ public class ElementAction extends TestBaseCase{
 				+ "&lt;div id=\"close\"&gt;&lt;/div&gt;\n";
 		return msg;
 	}
+
 	/**
 	 * 查找一组元素
 	 * @param locator 元素定位信息

@@ -27,7 +27,7 @@ public class LoginAction extends TestBaseCase{
     }
 
     public void login(String userName,String passWord) throws IOException {
-        //action.click(loginPage.账户登录());
+
         action.sleep(1);
         action.clear(loginPage.密码输入框());
         action.type(loginPage.用户名输入框(),userName);
@@ -40,10 +40,7 @@ public class LoginAction extends TestBaseCase{
         String elementText = action.getText(locator);
     }
 
-    public void switchTo(String str) throws IOException {
-        action.click(loginPage.切换登录方式(str));
+    public void switchTo() throws IOException {
+        action.click(loginPage.切换到账号登录());
     }
-
-
-
 }

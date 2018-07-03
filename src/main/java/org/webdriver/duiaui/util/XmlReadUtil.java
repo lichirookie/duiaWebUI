@@ -54,31 +54,34 @@ public class XmlReadUtil {
 							String value = null;
 							String locatorName = null;
 							Element locator = (Element) l.next();
+							String returenType = "";
 							//获取元素名
 							locatorName = locator.getText();
 							//log.info("开始读取"+locatorName+"定位信息");
 							for (Iterator<?> k = locator.attributeIterator(); k.hasNext();)
 							{
 								Attribute attribute = (Attribute) k.next();
-								if (attribute.getName().equals("type"))
+								if ("type".equals(attribute.getName()))
 								{
 									type = attribute.getValue();
 									//log.info("读取定位方式： " + type);
-								} else if (attribute.getName().equals("timeout"))
+								} else if ("timeout".equals(attribute.getName()))
 								{
 									timeOut = attribute.getValue();
 									//log.info("读取元素等待时间 ：" + timeOut);
-								} else if (attribute.getName().equals("value"))
+								} else if ("value".equals(attribute.getName()))
 								{
 									value = attribute.getValue();
 									//log.info("读取定位内容：" + value);
+								}else if ("returntype".equals(attribute.getName())){
+									value = attribute.getValue();
 								}
 							}
 							//trim()去除字符串前后空格
 							/**
 							 * 将xml中解析的各字段值封装到Locator对象中
 							 * */
-							Locator temp = new Locator(value.trim(),Integer.parseInt(timeOut), getByType(type),locatorName.trim());
+							Locator temp = new Locator(value.trim(),Integer.parseInt(timeOut), getByType(type),locatorName.trim(),returenType.trim());
 							//log.info("成功读取 " + locatorName+"元素信息！");
 							/**
 							 * 将locatorName作为key,Locator temp作为value存储到locatorMap中，最后返回这个map

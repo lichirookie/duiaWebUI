@@ -11,24 +11,33 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.testng.annotations.Parameters;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.*;
 
 public class TestBaseCase {
 	public static WebDriver driver;
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	//方法描述
 	public static String description;
+	private String url;
 	public Log log=new Log(this.getClass().getSuperclass());
 	@BeforeTest
-	@Parameters({"driver","nodeURL"})
-	public void  setup( String driver,String nodeURL) throws MalformedURLException {
+	@Parameters({"driver","nodeURL","BaseUrl"})
+	public void  setup( String driver,String nodeURL,String baseURL) throws MalformedURLException {
 		log.info("------------------开始执行测试---------------");
 		if(nodeURL.equals("")||nodeURL.isEmpty())
 		{
 			log.info("读取testng.xml配置的"+driver+"浏览器并将其初始化\n");
 			try {
 				this.driver=setDriver(driver);
+				setUrl(baseURL);
 			} catch (Exception e) {
 				log.error("没有成功浏览器环境配置错误");
 				e.printStackTrace();
@@ -90,6 +99,7 @@ public class TestBaseCase {
 				this.driver=new FirefoxDriver();
 				break;
 		}
+		driver.manage().deleteAllCookies();
 		return driver;
 	}
 

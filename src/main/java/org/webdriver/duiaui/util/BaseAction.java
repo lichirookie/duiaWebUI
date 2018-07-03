@@ -52,10 +52,10 @@ public class BaseAction extends TestBaseCase{
 		try {
 			if((path==null||path.isEmpty()))
 			{
+				//readXMLDocument返回locatorMap(locatorName.trim(), temp);temp=Locator(value.trim(),Integer.parseInt(timeOut), getByType(type),locatorName.trim(),returenType.trim())
 				locatorMap = xmlReadUtil.readXMLDocument(path_inputStream_1, this.getClass().getCanonicalName());}
 			else {
 				locatorMap = xmlReadUtil.readXMLDocument(path, this.getClass().getCanonicalName());
-
 			}
 
 		} catch (Exception e) {
@@ -104,10 +104,31 @@ public class BaseAction extends TestBaseCase{
 		/**
 		 * 在对象库通过对象名字查找定位信息
 		 */
+		//返回locatorName为key的locatorTemp()=Locator(value.trim(),Integer.parseInt(timeOut), getByType(type),locatorName.trim(),returenType.trim())
 		locator=locatorMap.get(locatorName);
 		/**
 		 * 加入对象库，找不到该定位信息，就创建一个定位信息
 		 */
+
+		if(locator==null)
+		{
+			log.error("没有找到"+locatorName+"页面元素");
+		}
+		return locator;
+
+	}
+
+	public  Locator getLocator(String locatorName,String returnType)
+	{
+		Locator locator;
+		/**
+		 * 在对象库通过对象名字查找定位信息
+		 */
+		locator=locatorMap.get(locatorName);
+		/**
+		 * 加入对象库，找不到该定位信息，就创建一个定位信息
+		 */
+
 		if(locator==null)
 		{
 			log.error("没有找到"+locatorName+"页面元素");

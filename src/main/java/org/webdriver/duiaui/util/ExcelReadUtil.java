@@ -12,6 +12,8 @@ import jxl.DateCell;
 import jxl.Sheet;
 import jxl.Workbook;
 
+import org.testng.annotations.Test;
+
 /**
  * excel读取类，用于读取excel数据
  * @author Administrator
@@ -27,6 +29,7 @@ public class ExcelReadUtil {
 	 * @param end_col 结束列从0开始
 	 * @return  Object[][]
 	 */
+
 	public static  Object[][] case_data_excel( int sheet_id,
 											   int start_row,
 											   int end_row,
@@ -264,7 +267,7 @@ public class ExcelReadUtil {
 			int cols=testcase_data_sheet.getColumns();
 			testcase_data_array=new String[rows][cols];
 			//获取每行用例数据
-			out:for (int row = 1,i=0; row <=rows-1||i<testcase_data_array.length; row++,i++)
+			out:for (int row = 0,i=0; row <=rows-1||i<testcase_data_array.length; row++,i++)
 			{
 				//用一个数组，存放每行数据。//每循环一行，初始化一次数组，将原有数组内存释放
 				//特别注意，只取一个表里的几列数据的时候，数组的长度一定要初始化正确
@@ -288,15 +291,17 @@ public class ExcelReadUtil {
 					//将每一行的每一个列值赋值给行数组，循环行数组赋值
 					row_array[j]=cell_value;
 				}
-				//每获得一行数据就将起存入，用例LIST列表中
-				testcase_data_list.add(row_array);
+				if(row!=0){
+					//每获得一行数据就将起存入，用例LIST列表中
+					testcase_data_list.add(row_array);
+				}
 
 			}
-
+			//遍历后拆箱list装箱为数组array
 			String[][] testcase_data_array_try=new String[testcase_data_list.size()][cols];
+			testcase_data_list.toArray();
 			testcase_data_array_try=testcase_data_list.toArray(testcase_data_array_try);
 			testcase_data_array=testcase_data_array_try;
-
 		}
 		catch (Exception e) {
 			// TODO: handle exception
@@ -306,6 +311,11 @@ public class ExcelReadUtil {
 		return testcase_data_object;
 
 	}
+
+/*
+	public void test_case_data_excel(){
+		case_data_excel( 1, "src/main/resources/data/loginData.xls");
+	}*/
 
 
 
