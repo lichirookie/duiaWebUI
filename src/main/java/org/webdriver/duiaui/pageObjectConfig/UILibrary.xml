@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--整个对象库文件的根目录，管理整个项目的对象-->
-<map>
+<elements>
 		<!--xmlns:pagemap="org.webdriver.duiauiageObjectConfig"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="org.webdriver.duiauiageObjectConfig "-->
@@ -37,9 +37,25 @@
 			<locator type="cssSelector" timeout="3" value=".t-mainsku"  returntype="list" desc="sku列表">SKU列表</locator>
 			<locator type = "cssSelector" timeout="3" value=".sku-mr" returntype="list" desc="sku集合">SKU集合</locator>
 		</page>
+
+		<page pagename="org.webdriver.duiaui.pageObject.front.pc.SkuPage" value="pc" desc="PC端SKU页面">
+			<locator type="cssSelector" timeout="3" value=".list-ul-a"  returntype="list" desc="sku列表">SKU列表</locator>
+		</page>
+
+		<page pagename="org.webdriver.duiaui.pageObject.front.pc.SkuDetailPage" value="pc" desc="PC端SKU详情页面">
+			<locator type="className" timeout="3" value="signUp"  returntype="" desc="报名按钮">报名按钮</locator>
+		</page>
+
+		<page pagename="org.webdriver.duiaui.pageObject.front.pc.ConfirmOrderPage" value="pc" desc="PC端提交订单页">
+			<locator type="id" timeout="3" value="goPay"  returntype="" desc="结算按钮">结算按钮</locator>
+		</page>
+
+		<page pagename="org.webdriver.duiaui.pageObject.front.pc.OrderListPage" value="pc" desc="PC端订单列表页">
+			<locator type="className" timeout="3" value="order-title" returntype="" desc="未支付订单列表">未支付订单列表</locator>
+		</page>
+
+
 	</src>
 
 
-
-
-</map>
+</elements>

@@ -31,6 +31,8 @@ public class LoginTest extends TestBaseCase{
         //调用登录方法，输入正确的用户名和密码
         LoginAction loginAction=new LoginAction("http://sso.duia.com/uc");
         action.sleep(2);
+        Assertion.VerityTitle("对啊-登录");
+
         loginAction.switchTo();
         loginAction.login(userName,passWord);
         //设置检查点
@@ -51,6 +53,7 @@ public class LoginTest extends TestBaseCase{
         //return ExcelReadUtil.case_data_excel(0,,filePath);
         return ExcelReadUtil.case_data_excel(0,filePath);
     }
+
     @Test(description="登录失败用例",dataProvider = "longinFailData",groups = "1")
     public void loginFail (String caseName,String userName,String password,String message) throws IOException, DocumentException {
 	//代替testng参数化的方法

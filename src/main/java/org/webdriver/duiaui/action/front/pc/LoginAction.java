@@ -15,11 +15,11 @@ public class LoginAction extends TestBaseCase{
     LoginPage loginPage=new LoginPage();
     ElementAction action=new ElementAction();
     String pageText;
+
     public LoginAction(String Url) throws IOException
     {
         //此driver变量继承自TestBase变量
         loginPage.open(Url);
-        Assertion.VerityTitle("对啊-登录");
         //预留与页面源码对比
         driver.getPageSource().trim();
         System.out.println(driver.getCurrentUrl());

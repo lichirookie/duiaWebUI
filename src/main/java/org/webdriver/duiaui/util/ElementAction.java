@@ -99,7 +99,8 @@ public class ElementAction extends TestBaseCase{
 							// TODO 自动生成的方法存根
 							List<WebElement> element=null;
 							element=getElements(locator);
-							return element;}
+							return element;
+						}
 					});
 			return webElements;
 		} catch (NoSuchElementException e) {
@@ -830,6 +831,17 @@ public class ElementAction extends TestBaseCase{
 		driver.getWindowHandles().toArray(handls);
 		driver.switchTo().window(handls[i]);
 	}
+
+	public void switchToWindow(){
+		String handle = driver.getWindowHandle();
+		// 获取所有页面的句柄，并循环判断不是当前的句柄
+		for (String temhandle : driver.getWindowHandles()) {
+			if (!temhandle.equals(handle))
+				driver.close();
+			driver.switchTo().window(temhandle);
+		}
+	}
+
 	/**
 	 * 隐式等待
 	 * @param  driver 浏览器driver
@@ -911,6 +923,36 @@ public class ElementAction extends TestBaseCase{
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 显式等待，等待元素可以点击
+	 * @param element 传入元素
+	 */
+	public static WebElement waitElementCanClickable(By element){
+		wait = new WebDriverWait(driver,10);
+		return wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+
+
+	/**
+	 * 显式等待，等待元素显示
+	 * @param element 传入元素
+	 */
+	public static WebElement waitElementDisabled(By element){
+		wait = new WebDriverWait(driver,10);
+		return wait.until(ExpectedConditions.presenceOfElementLocated(element));
+	}
+
+	/**
+	 * 当页面滑动导致的遮挡元素无法获取元素时，可通过调用js的方法获取元素
+	 * @param driver,elment
+	 */
+	public static void clickOnHideButton(WebDriver driver,WebElement element){
+		((JavascriptExecutor)driver).executeScript("arguments[0].click()",element);
+	}
+
+
+
 	/**
 	 * 显式等待 判断页面是否完全加载完成
 	 * @param time 已秒为单位
@@ -932,7 +974,7 @@ public class ElementAction extends TestBaseCase{
 
 	}
 	/**
-	 * 判断医组元素是否存在
+	 * 判断一组元素是否存在
 	 * @param locator 一组元素定位信息
 	 * @param timeOut 超时时间 秒
 	 * @return 返回boolean true存在，false不存在

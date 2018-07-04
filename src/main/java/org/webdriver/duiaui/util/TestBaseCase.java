@@ -11,10 +11,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 public class TestBaseCase {
 	public static WebDriver driver;
+	public static WebDriverWait wait;
 
 	public String getUrl() {
 		return url;

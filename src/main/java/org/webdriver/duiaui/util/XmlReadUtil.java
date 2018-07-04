@@ -74,7 +74,7 @@ public class XmlReadUtil {
 									value = attribute.getValue();
 									//log.info("读取定位内容：" + value);
 								}else if ("returntype".equals(attribute.getName())){
-									value = attribute.getValue();
+									returenType = attribute.getValue();
 								}
 							}
 							//trim()去除字符串前后空格
