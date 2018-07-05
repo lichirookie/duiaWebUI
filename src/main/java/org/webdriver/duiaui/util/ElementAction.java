@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
@@ -832,7 +833,7 @@ public class ElementAction extends TestBaseCase{
 		driver.switchTo().window(handls[i]);
 	}
 
-	public void switchToWindow(){
+	public void switchToNewWindow(){
 		String handle = driver.getWindowHandle();
 		// 获取所有页面的句柄，并循环判断不是当前的句柄
 		for (String temhandle : driver.getWindowHandles()) {
@@ -840,6 +841,12 @@ public class ElementAction extends TestBaseCase{
 				driver.close();
 			driver.switchTo().window(temhandle);
 		}
+	}
+
+	public void switchToOldWindow() throws InterruptedException {
+		Set<String> winHandels = driver.getWindowHandles(); // 得到当前窗口的set集合
+		List<String> it = new ArrayList<String>(winHandels); // 将set集合存入list对象
+		driver.switchTo().window(it.get(0)); // 返回至原页面
 	}
 
 	/**

@@ -43,7 +43,7 @@ public class OrderListPageAction {
     }
 
     public void switchToToBePayList(){
-        if(!action.getUrl().matches("(http://uc.duia.com/userOrder\\?nav=4#/orderList/)+(\\d)+")){
+        if(action.getUrl().matches("(http://uc.duia.com/userOrder\\?nav=4#/orderList/)+(\\d)+")){
 
         }else{
             orderListPage.open(getToBeUrl());

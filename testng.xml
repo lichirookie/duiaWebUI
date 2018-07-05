@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" allow-return-values="true">
+<suite name="Suite" allow-return-values="true"   parallel="tests" verbose="1" preserve-order="true">
 	<parameter name="driver" value="FirefoxDriver" /> <!--测试浏览器：支持火狐，谷歌，IE-->
 	<parameter name="nodeURL" value="" /> <!--selenium grid分布式运行node节点url，如不用分布式运行，则留空-->
     <parameter name="BaseUrl" value="http://www.duia.com"></parameter>
@@ -65,11 +65,13 @@
 -->
 
     <test name="下单流程">
+        <groups>
+            <define name="confrimOrder">
+                <include name="confrimOrder"></include>
+            </define>
+        </groups>
         <classes>
             <class name = "duia.controller.MainController">
-                <methods>
-                    <include name = "placeOrder"></include>
-                </methods>
             </class>
         </classes>
     </test>

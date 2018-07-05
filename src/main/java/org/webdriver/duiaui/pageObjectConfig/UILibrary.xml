@@ -54,7 +54,10 @@
 			<locator type="className" timeout="3" value="order-title" returntype="" desc="未支付订单列表">未支付订单列表</locator>
 		</page>
 
-
+		<page pagename="org.webdriver.duiaui.pageObject.front.pc.PayPage" value="pc" desc="PC端付款页面">
+			<locator type="className" timeout="3" value="pay-wx" returntype="" desc="微信支付按钮">微信支付按钮</locator>
+			<locator type="className" timeout="3" value="pay-btn2" returntype="" desc="支付页弹窗的支付遇到问题按钮">支付页弹窗的支付遇到问题按钮</locator>
+		</page>
 	</src>
 
 

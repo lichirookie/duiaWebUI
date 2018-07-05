@@ -10,7 +10,7 @@ private String path="src/main/java/org/webdriver/duiaui/pageObjectConfig/UILibra
  public   HomePage() {
 //工程内读取对象库文件
 	setXmlObjectPath(path);
-getLocatorMap();
+    getLocatorMap();
 }
 /***
 * list
