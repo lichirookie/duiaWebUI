@@ -1,12 +1,10 @@
 package duia.controller;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.webdriver.duiaui.action.front.pc.*;
-import org.webdriver.duiaui.util.Assertion;
-import org.webdriver.duiaui.util.ElementAction;
-import org.webdriver.duiaui.util.RegexUtils;
-import org.webdriver.duiaui.util.TestBaseCase;
+import org.webdriver.duiaui.util.*;
 
 import java.io.IOException;
 
@@ -27,16 +25,29 @@ public class MainController extends TestBaseCase {
     String tempURL;
     String confirmOrderNum;
     RegexUtils regexUtils = new RegexUtils();
+    String baseUrl = "";
+    BaseAction baseAction = new BaseAction();
 
+    //数据驱动案例--start
+    @DataProvider(name="mainController" )
+    public Object[][] loginData()
+    {
+        //读取登录用例测试数据
+        String filePath="src/main/resources/data/mainContrlle.xls";
+        //读取第一个sheet
+        //return ExcelReadUtil.case_data_excel(0,,filePath);
 
-    @Test(description = "登录成功",groups = "confrimOrder",priority = 1 )
-    public void login() throws IOException {
+        return ExcelReadUtil.case_data_excel(0,filePath);
+    }
+
+    @Test(description = "登录成功",groups = "confrimOrder",priority = 1,dataProvider = "mainController")
+    public void login(String userName,String password) throws IOException {
         //1、登录
-        LoginAction loginAction = new LoginAction("http://sso.duia.com/uc");
-        action.sleep(2);
+        LoginAction loginAction = new LoginAction(2,"http://sso.duia.com/uc");
         Assertion.VerityTitle("对啊-登录");
         loginAction.switchTo();
-        loginAction.login("18510991012","1012glz");
+        loginAction.login(userName,password);
+        action.sleep(2);
         action.switchToNewWindow();
         Assertion.VerityURL("http://www.duia.com/#page1");
         Assertion.VerityTitle("对啊网|重塑职业未来");

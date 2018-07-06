@@ -251,7 +251,7 @@ public class ElementAction extends TestBaseCase{
 		//Waitformax(Integer.valueOf(locator.getWaitSec()));
 		WebElement webElement=null;
 		try {
-			webElement=(new WebDriverWait(driver, 20)).until(
+			webElement=(new WebDriverWait(driver, 5)).until(
 					new ExpectedCondition<WebElement>() {
 
 						@Override

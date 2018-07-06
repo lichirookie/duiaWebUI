@@ -39,6 +39,15 @@ public class Log
         prop.setProperty("log4j.appender.CONSOLE.layout.ConversionPattern", "[%d{YYYY-MM-dd HH:mm:ss,SSS}] %-5p %c %m%n");
 
 
+
+        //设置httpClient级别
+        prop.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
+        prop.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true");
+        prop.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire.header", "debug");
+        prop.setProperty("org.apache.commons.logging.simplelog.log.org.apache.commons.httpclient", "debug");
+
+
+
         String src="testoutput/log";
         //设置日期格式
         SimpleDateFormat dateFormat=new SimpleDateFormat("yyyyMMdd");

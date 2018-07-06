@@ -26,10 +26,10 @@ public class LoginTest extends TestBaseCase{
     }
 
     @Test(description="登录成功测试",dataProvider = "loginSuccessData",groups = "1")
-    public void loginSuccess(String caseName,String userName,String passWord,String uri,String test) throws IOException
+    public void loginSuccess(String caseName,String userName,String passWord,String uri,String test,String URL) throws IOException
     {
         //调用登录方法，输入正确的用户名和密码
-        LoginAction loginAction=new LoginAction("http://sso.duia.com/uc");
+        LoginAction loginAction=new LoginAction(2,URL);
         action.sleep(2);
         Assertion.VerityTitle("对啊-登录");
 
@@ -58,7 +58,7 @@ public class LoginTest extends TestBaseCase{
     public void loginFail (String caseName,String userName,String password,String message) throws IOException, DocumentException {
 	//代替testng参数化的方法
     //调用登录方法
-        LoginAction loginAction=new LoginAction("http://sso.duia.com/uc");
+        LoginAction loginAction=new LoginAction(2,"http://sso.duia.com/uc");
         action.sleep(1);
         loginAction.switchTo();
         loginAction.login(userName,password);

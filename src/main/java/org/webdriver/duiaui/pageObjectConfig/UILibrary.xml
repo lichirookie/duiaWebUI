@@ -36,6 +36,7 @@
 		<page pagename="org.webdriver.duiaui.pageObject.front.pc.HomePage" value="pc" desc="PC端首页">
 			<locator type="cssSelector" timeout="3" value=".t-mainsku"  returntype="list" desc="sku列表">SKU列表</locator>
 			<locator type = "cssSelector" timeout="3" value=".sku-mr" returntype="list" desc="sku集合">SKU集合</locator>
+			<locator type = "cssSelector" timeout="3" value=".t-login.a" returntype="list" desc="登录注册按钮">登录注册按钮</locator>
 		</page>
 
 		<page pagename="org.webdriver.duiaui.pageObject.front.pc.SkuPage" value="pc" desc="PC端SKU页面">

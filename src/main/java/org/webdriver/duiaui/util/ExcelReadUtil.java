@@ -312,6 +312,71 @@ public class ExcelReadUtil {
 
 	}
 
+
+
+	public static  String[][] case_data_excel2String( int sheet_id,
+											   String sourcefile
+
+	)
+	{
+		String cell_value=null;
+		Cell cell=null;
+		ArrayList<Object> testcase_data_list=new ArrayList<Object>();
+		String[][] testcase_data_array=null;
+		Workbook testcase_data_workbook = null;
+		try
+		{
+			testcase_data_workbook=Workbook.getWorkbook(new File(sourcefile));
+			Sheet testcase_data_sheet=testcase_data_workbook.getSheet(sheet_id);
+			int rows=testcase_data_sheet.getRows();
+			int cols=testcase_data_sheet.getColumns();
+			testcase_data_array=new String[rows][cols];
+			//获取每行用例数据
+			out:for (int row = 0,i=0; row <=rows-1||i<testcase_data_array.length; row++,i++)
+			{
+				//用一个数组，存放每行数据。//每循环一行，初始化一次数组，将原有数组内存释放
+				//特别注意，只取一个表里的几列数据的时候，数组的长度一定要初始化正确
+				String[] row_array=new String[cols];
+				for(int col=0,j=0;col<=cols-1||j<row_array.length;col++,j++)
+				{
+					cell=testcase_data_sheet.getCell(col, row);
+					String val = cell.getContents();
+
+					if(col==0&val.isEmpty()){
+						break out;
+					}
+					if(cell.getType() == CellType.DATE){
+						DateCell dc = (DateCell)cell;
+						Date date = dc.getDate();	//获取单元格的date类型
+						cell_value=formatDate(date,"yyyy-MM-dd");
+					}
+					else {
+						cell_value=testcase_data_sheet.getCell(col, row).getContents();
+					}
+
+					//将每一行的每一个列值赋值给行数组，循环行数组赋值
+					row_array[j]=cell_value;
+				}
+				if(row!=0){
+					//每获得一行数据就将起存入，用例LIST列表中
+					testcase_data_list.add(row_array);
+				}
+
+			}
+			//遍历后拆箱list装箱为数组array
+			String[][] testcase_data_array_try=new String[testcase_data_list.size()][cols];
+			testcase_data_list.toArray();
+			testcase_data_array_try=testcase_data_list.toArray(testcase_data_array_try);
+			testcase_data_array=testcase_data_array_try;
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		//Object[][] testcase_data_object=(Object[][])testcase_data_array;
+		return testcase_data_array;
+
+	}
 /*
 	public void test_case_data_excel(){
 		case_data_excel( 1, "src/main/resources/data/loginData.xls");

@@ -15,11 +15,11 @@
     <parameter name="reportUrl" value="http://172.16.20.9:8080/report/report.html" />  <!-- 测试报告邮件发送：完整测试报告url-->
 	<parameter name="recipients" value="guanlizhi4988@duia.com" /> <!-- 测试报告邮件发送：收件人，多个用,号隔开-->
     <parameter name="reportTitle" value="对啊网UI测试报告" />  <!--测试报告标题-->
-	<listeners><!-- 监听器设置-->
+	<!--<listeners>&lt;!&ndash; 监听器设置&ndash;&gt;
         <listener class-name="org.webdriver.duiaui.util.TestListener"></listener>
         <listener class-name="org.webdriver.duiaui.util.TestReport"></listener>
-    </listeners>
-<!--     <test name="登录失败测试用例：数据驱动"> &lt;!&ndash; 测试用例描述&ndash;&gt;
+    </listeners>-->
+  <!--   <test name="登录失败测试用例：数据驱动"> &lt;!&ndash; 测试用例描述&ndash;&gt;
          &lt;!&ndash;<parameter name="driver" value="FirefoxDriver" /> &lt;!&ndash;测试浏览器：支持火狐，谷歌，IE&ndash;&gt;&ndash;&gt;
          &lt;!&ndash;<parameter name="nodeURL" value="http://192.168.0.178:3155/wd/hub" /> &lt;!&ndash;selenium grid分布式运行node节点url，如不用分布式运行，则留空&ndash;&gt;&ndash;&gt;
         <classes>
@@ -29,11 +29,12 @@
                 </methods>
             </class>
         </classes>
-    </test>
+    </test>-->
 
-    <test name="登录成功测试用例：数据驱动">
+   <!-- <test name="登录成功测试用例：数据驱动">
         &lt;!&ndash;<parameter name="driver" value="ChormeDriver" /> &lt;!&ndash;测试浏览器：支持火狐，谷歌，IE&ndash;&gt;&ndash;&gt;
         &lt;!&ndash;<parameter name="nodeURL" value="http://192.168.0.178:3166/wd/hub" /> &lt;!&ndash;selenium grid分布式运行node节点url，如不用分布式运行，则留空&ndash;&gt;&ndash;&gt;
+        <parameter name="接收到的URL"  value=""></parameter>
         <classes>
             <class name="duia.LoginTest">
                 <methods >
@@ -41,9 +42,9 @@
                 </methods>
             </class>
         </classes>
-    </test> &lt;!&ndash; Test &ndash;&gt;-->
+    </test> &lt;!&ndash; Test &ndash;&gt;
 
- <!--   <test name="首页：测试驱动">
+    <test name="首页：测试驱动">
         <classes>
             <class name = "duia.controller.MainController">
                <methods>
@@ -61,9 +62,7 @@
                 </methods>
             </class>
         </classes>
-    </test>
--->
-
+    </test>-->
     <test name="下单流程">
         <groups>
             <define name="confrimOrder">
@@ -75,6 +74,5 @@
             </class>
         </classes>
     </test>
-
 
 </suite> <!-- Suite -->

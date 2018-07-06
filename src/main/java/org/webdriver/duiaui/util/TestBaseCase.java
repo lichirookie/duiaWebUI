@@ -8,6 +8,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -156,8 +157,7 @@ public class TestBaseCase {
 		}
 		return driver;
 	}
-	public static void main(String args[])
-	{
+	public static void main(String args[]) throws IOException, Exception {
 		WebDriver driver2=new FirefoxDriver();
 		driver2.get("http://www.baidu.com");
 	}

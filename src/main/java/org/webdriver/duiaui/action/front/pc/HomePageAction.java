@@ -17,11 +17,24 @@ import java.util.List;
 public class HomePageAction extends TestBaseCase{
     ElementAction action = new ElementAction();
     HomePage homePage = new HomePage();
+
+
     //WebDriver driver = new FirefoxDriver();
 
 
     public HomePageAction(){
         homePage.open("http://www.duia.com/#page1");
+    }
+
+    public void clickLogin() throws IOException {
+        List<WebElement> loginSign = action.findElements(homePage.登录注册按钮());
+        WebElement loginButton = loginSign.get(0);
+        loginButton.click();
+        LoginAction loginAction = new LoginAction(1,"");
+    }
+
+    public void clickSign(){
+
     }
     /*
     * 页面元素及动作：
