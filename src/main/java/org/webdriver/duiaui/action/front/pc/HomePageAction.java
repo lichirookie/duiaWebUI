@@ -30,12 +30,12 @@ public class HomePageAction extends TestBaseCase{
         List<WebElement> loginSign = action.findElements(homePage.登录注册按钮());
         WebElement loginButton = loginSign.get(0);
         loginButton.click();
-        LoginAction loginAction = new LoginAction(1,"");
     }
 
     public void clickSign(){
 
     }
+
     /*
     * 页面元素及动作：
     * 1、导航条
@@ -51,8 +51,5 @@ public class HomePageAction extends TestBaseCase{
         skuElements.get(0).click();*/
         JavascriptExecutor dr = (JavascriptExecutor)driver;
         dr.executeScript("document.querySelector('.sku-mr').click();");
-
-
-
     }
 }

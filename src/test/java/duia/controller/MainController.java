@@ -25,24 +25,14 @@ public class MainController extends TestBaseCase {
     String tempURL;
     String confirmOrderNum;
     RegexUtils regexUtils = new RegexUtils();
-    String baseUrl = "";
-    BaseAction baseAction = new BaseAction();
+    String filePath = "src/main/resources/data/mainController.xls";
 
-    //数据驱动案例--start
-    @DataProvider(name="loginSuccessData" )
-    public Object[][] loginSuccessData()
-    {
-        //读取登录用例测试数据
-        String filePath="src/main/resources/data/mainController.xls";
-        //读取第一个sheet
-        //return ExcelReadUtil.case_data_excel(0,,filePath);
 
-        return ExcelReadUtil.case_data_excel(0,filePath);
-    }
+
 
     @DataProvider(name="loginData")
     public Object[][] loginData(){
-        String filePath = "src/main/resources/data/mainController.xls";
+        //String filePath = "src/main/resources/data/mainController.xls";
         return ExcelReadUtil.case_data_excel(1,filePath);
     }
 
@@ -52,6 +42,13 @@ public class MainController extends TestBaseCase {
         Assertion.VerityTitle(exceptTitle);
     }
 
+
+    //数据驱动案例--start
+    @DataProvider(name="loginSuccessData" )
+    public Object[][] loginSuccessData()
+    {
+        return ExcelReadUtil.case_data_excel(0,filePath);
+    }
     @Test(description = "登录成功",groups = "confirmOrder",priority = 2,dataProvider = "loginSuccessData")
     public void loginSuccess(String casename,String userName,String password,String exceptUrl,String exceptTitle) throws IOException {
         //1、登录
@@ -60,11 +57,17 @@ public class MainController extends TestBaseCase {
         loginAction.login(userName,password);
         action.sleep(2);
         action.switchToNewWindow();
-        Assertion.VerityURL(exceptUrl);
+        Assertion.VerityURL(getUrl()+exceptUrl);
         Assertion.VerityTitle(exceptTitle);
     }
 
-    @Test(description = "首页选择SKU",groups = "confirmOrder",priority = 3)
+
+    @DataProvider(name = "selectSku")
+    public Object[][] selectSku(){
+        return ExcelReadUtil.case_data_excel(2,filePath);
+    }
+
+    @Test(description = "首页选择SKU",dataProvider = "selectSku",groups = "confirmOrder",priority = 3)
     public void homePageSkuSelect() throws IOException {
         //2、选择SKU
         HomePageAction homePageAction = new HomePageAction();

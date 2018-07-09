@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 /**
- * Created by xiang.li on 2015/2/11.
+ * Created by lichi on 2018/2/11.
  */
 public class SHA {
     /**

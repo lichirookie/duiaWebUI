@@ -6,19 +6,19 @@
     <parameter name="BaseUrl" value="http://www.duia.com"></parameter>
 	<parameter name="UserName" value="" /> <!-- 系统登录用户名-->
 	<parameter name="PassWord" value="" />  <!-- 系统登录密码-->
-    <parameter name="smtpUserName" value="suprookie@sina.cn" />  <!-- 测试报告邮件发送：smtp身份证验证：发件人-->
-    <parameter name="smtpPassWord" value="glz19841012" />  <!-- 测试报告邮件发送：smtp身份证验证：发件人-->
-    <parameter name="smtpHost" value="smtp.sina.com.cn" />  <!-- 测试报告邮件发送：smtp主机地址：发件人-->
+    <parameter name="smtpUserName" value="guanlizhi4988@duia.com" />  <!-- 测试报告邮件发送：smtp身份证验证：发件人-->
+    <parameter name="smtpPassWord" value="1012glz" />  <!-- 测试报告邮件发送：smtp身份证验证：发件人-->
+    <parameter name="smtpHost" value="smtp.263.net" />  <!-- 测试报告邮件发送：smtp主机地址：发件人-->
     <parameter name="smtpPort" value="25" />  <!-- 测试报告邮件发送：smtp主机端口：：发件人-->
     <parameter name="mailTitle" value="对啊UI自动化测试报告" />  <!-- 测试报告邮件发送：邮件标题-->
     <parameter name="logUrl" value="http://172.16.20.9:8080/log/log.html" />  <!-- 测试报告邮件发送：用例运行日志url-->
     <parameter name="reportUrl" value="http://172.16.20.9:8080/report/report.html" />  <!-- 测试报告邮件发送：完整测试报告url-->
 	<parameter name="recipients" value="guanlizhi4988@duia.com" /> <!-- 测试报告邮件发送：收件人，多个用,号隔开-->
     <parameter name="reportTitle" value="对啊网UI测试报告" />  <!--测试报告标题-->
-	<!--<listeners>&lt;!&ndash; 监听器设置&ndash;&gt;
+	<listeners><!-- 监听器设置-->
         <listener class-name="org.webdriver.duiaui.util.TestListener"></listener>
         <listener class-name="org.webdriver.duiaui.util.TestReport"></listener>
-    </listeners>-->
+    </listeners>
   <!--   <test name="登录失败测试用例：数据驱动"> &lt;!&ndash; 测试用例描述&ndash;&gt;
          &lt;!&ndash;<parameter name="driver" value="FirefoxDriver" /> &lt;!&ndash;测试浏览器：支持火狐，谷歌，IE&ndash;&gt;&ndash;&gt;
          &lt;!&ndash;<parameter name="nodeURL" value="http://192.168.0.178:3155/wd/hub" /> &lt;!&ndash;selenium grid分布式运行node节点url，如不用分布式运行，则留空&ndash;&gt;&ndash;&gt;
@@ -63,7 +63,13 @@
             </class>
         </classes>
     </test>-->
-    <test name="下单流程">
+
+    <suite-files>
+        <suite-file path="controller.xml" />
+        <!--<suite-file path="testng-customsuite2.xml" />-->
+    </suite-files>
+
+  <!--  <test name="下单流程">
         <groups>
             <define name="confrimOrder">
                 <include name="confirmOrder"></include>
@@ -74,5 +80,5 @@
             </class>
         </classes>
     </test>
-
+-->
 </suite> <!-- Suite -->

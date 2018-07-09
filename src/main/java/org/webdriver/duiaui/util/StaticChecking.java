@@ -21,7 +21,7 @@ public class StaticChecking {
      @param  timeoutDefault 默认加载页面的时间
      @return    报错的url和报错的信息
       * @备注： HashMap<String,List<String>>
-     * @author zhangjun
+     * @author lichi
      * @date 2018年5月24日
      @修改说明
      */

@@ -31,6 +31,7 @@ public class Assertion extends TestBaseCase {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HHmmssSSS");
 		return formatter.format(date).toString();
 	}
+
 	private static void snapshotInfo()
 	{
 		WebDriver driver=TestBaseCase.driver;
