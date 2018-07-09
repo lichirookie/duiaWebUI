@@ -56,7 +56,6 @@ public class LoginAction extends TestBaseCase{
             //1、拿到url先要截取returnurl=后的字符串，之后将%2F替换为"/",%3A替换为":",%3F替换为"?",%3D替换为"="
             UrlRecombine recombine = new UrlRecombine();
             currentUrl = recombine.urlRecombine(currentUrl);
-
         }
         return currentUrl;
     }

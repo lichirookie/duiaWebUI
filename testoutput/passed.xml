@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<passed>
+<pass_assert_info   method="duia.controller.MainController.loginSuccess.1531115778205">
+<span class="pass_span">&lt;a class="clickbox" href="#url"&gt;
+&lt;img src="snapshot/2018-07-09 135617682.jpg" height="100" width="100" alt="" /&gt;
+&lt;b class="lightbox"&gt;
+&lt;b class="light"&gt;&lt;/b&gt;
+&lt;b class="box"&gt;
+&lt;img src="snapshot/2018-07-09 135617682.jpg" height="530" width="1024" onmousewheel="return bigimg(this)" alt="" /&gt;
+&lt;span&gt;滚动鼠标缩放大小,点击X关闭当前图片，返回报表界面.&lt;br /&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/b&gt;
+&lt;/b&gt;
+&lt;/a&gt;
+&lt;br class="clear" /&gt;
+&lt;a class="clickbox" href="#url"&gt;点击查看大图&lt;b class="lightbox"&gt;&lt;b class="light"&gt;&lt;/b&gt;&lt;b class="box"&gt;&lt;img src="snapshot/2018-07-09 135617682.jpg" height="530" width="1024" onmousewheel="return bigimg(this)" alt="" /&gt;&lt;span&gt;滚动鼠标缩放大小,点击X关闭当前图片，返回报表界面.&lt;br /&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;&lt;/b&gt;&lt;/b&gt; &lt;/a&gt;
+&lt;/br&gt;&lt;div id="close"&gt;&lt;/div&gt;
+</span></br>
+</pass_assert_info>
+</passed>
