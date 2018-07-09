@@ -24,6 +24,10 @@ public class LoginAction extends TestBaseCase{
         Scene = scene;
     }
 
+    public LoginAction(){
+
+    }
+
     public LoginAction(int scene, String url) throws IOException
     {
         switch (scene){

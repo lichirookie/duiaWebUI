@@ -29,31 +29,42 @@ public class MainController extends TestBaseCase {
     BaseAction baseAction = new BaseAction();
 
     //数据驱动案例--start
-    @DataProvider(name="mainController" )
-    public Object[][] loginData()
+    @DataProvider(name="loginSuccessData" )
+    public Object[][] loginSuccessData()
     {
         //读取登录用例测试数据
-        String filePath="src/main/resources/data/mainContrlle.xls";
+        String filePath="src/main/resources/data/mainController.xls";
         //读取第一个sheet
         //return ExcelReadUtil.case_data_excel(0,,filePath);
 
         return ExcelReadUtil.case_data_excel(0,filePath);
     }
 
-    @Test(description = "登录成功",groups = "confrimOrder",priority = 1,dataProvider = "mainController")
-    public void login(String userName,String password) throws IOException {
+    @DataProvider(name="loginData")
+    public Object[][] loginData(){
+        String filePath = "src/main/resources/data/mainController.xls";
+        return ExcelReadUtil.case_data_excel(1,filePath);
+    }
+
+    @Test(description = "open登录页面",groups = "confirmOrder",priority = 1,dataProvider = "loginData")
+    public void login(String casename,String url,String exceptTitle) throws IOException {
+        LoginAction loginAction = new LoginAction(2,url);
+        Assertion.VerityTitle(exceptTitle);
+    }
+
+    @Test(description = "登录成功",groups = "confirmOrder",priority = 2,dataProvider = "loginSuccessData")
+    public void loginSuccess(String casename,String userName,String password,String exceptUrl,String exceptTitle) throws IOException {
         //1、登录
-        LoginAction loginAction = new LoginAction(2,"http://sso.duia.com/uc");
-        Assertion.VerityTitle("对啊-登录");
+        LoginAction loginAction = new LoginAction();
         loginAction.switchTo();
         loginAction.login(userName,password);
         action.sleep(2);
         action.switchToNewWindow();
-        Assertion.VerityURL("http://www.duia.com/#page1");
-        Assertion.VerityTitle("对啊网|重塑职业未来");
+        Assertion.VerityURL(exceptUrl);
+        Assertion.VerityTitle(exceptTitle);
     }
 
-    @Test(description = "首页选择SKU",groups = "confrimOrder",priority = 2)
+    @Test(description = "首页选择SKU",groups = "confirmOrder",priority = 3)
     public void homePageSkuSelect() throws IOException {
         //2、选择SKU
         HomePageAction homePageAction = new HomePageAction();
@@ -65,7 +76,7 @@ public class MainController extends TestBaseCase {
         //Assertion.VerityTextPresent();
     }
 
-    @Test(description = "课程选择",groups = "confrimOrder",priority = 3)
+    @Test(description = "课程选择",groups = "confirmOrder",priority = 4)
     public void skuClaseSelect() throws IOException {
         //3、SKU
         SkuPageAction skuPageAction = new SkuPageAction();
@@ -77,7 +88,7 @@ public class MainController extends TestBaseCase {
         Assertion.VerityTitle("对啊网-会计初级职称-经验分享—从会计新人到合伙人");
     }
 
-    @Test(description = "课程预定",groups = "confrimOrder",priority = 4)
+    @Test(description = "课程预定",groups = "confirmOrder",priority = 5)
     public void classSignUp() throws IOException {
         SkuDetailPageAction skuDetailPageAction = new SkuDetailPageAction();
         skuDetailPageAction.clickSignUp();
@@ -88,7 +99,7 @@ public class MainController extends TestBaseCase {
         Assertion.VerityTextPresent("去结算");
     }
 
-    @Test(description = "订单提交",groups = "confrimOrder",priority = 5)
+    @Test(description = "订单提交",groups = "confirmOrder",priority = 6)
     public void orderConfirm() throws IOException {
         ConfirmOrderPageAction confirmOrderPageAction = new ConfirmOrderPageAction();
         confirmOrderPageAction.confirm();
@@ -101,13 +112,13 @@ public class MainController extends TestBaseCase {
         confirmOrderNum = regexUtils.getSubUtilSimple(tempURL,"((\\d){29})");
     }
 
-    @Test(description = "订单提交失败",groups="confrimOrder",priority = 6)
+    @Test(description = "订单提交失败",groups="confirmOrder",priority = 7)
     public void orderFailConfirm() throws IOException, InterruptedException {
         PayPageAction payPageAction = new PayPageAction();
         payPageAction.confirmFail();
     }
 
-    @Test(description = "订单列表页首订单与提交订单时订单对比",groups = "confrimOrder",priority = 7)
+    @Test(description = "订单列表页首订单与提交订单时订单对比",groups = "confrimOrder",priority = 8)
     public void orderCompare() throws IOException {
         OrderListPageAction orderListPageAction = new OrderListPageAction();
         action.switchToNewWindow();
@@ -125,9 +136,6 @@ public class MainController extends TestBaseCase {
 
         }
     }
-
-
-
 
 
 }
